@@ -1,5 +1,6 @@
 AWSTemplateFormatVersion: 2010-09-09
 
+# Template parameters
 Parameters:
   Name:
     Type: String
@@ -24,7 +25,7 @@ Parameters:
     Description: Domain name to host application
     Default: ""
 
-Conditions: 
+Conditions:
   UseCustomDomain: !Not [!Equals [!Ref Domain, ""]]
 
 Resources:
