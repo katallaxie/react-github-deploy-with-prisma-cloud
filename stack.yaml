@@ -1,5 +1,6 @@
 AWSTemplateFormatVersion: 2010-09-09
 
+# Template parameters
 Parameters:
   Name:
     Type: String
@@ -24,7 +25,7 @@ Parameters:
     Description: Domain name to host application
     Default: ""
 
-Conditions: 
+Conditions:
   UseCustomDomain: !Not [!Equals [!Ref Domain, ""]]
 
 Resources:
@@ -73,6 +74,12 @@ Resources:
       SubDomainSettings:
         - Prefix: master
           BranchName: !GetAtt AmplifyBranch.BranchName
+
+  MyS3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: react-github-deploy-with-prisma-cloud
+      AccessControl: PublicReadWrite
 
 Outputs:
   DefaultDomain:
